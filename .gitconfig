@@ -1,0 +1,41 @@
+[alias]
+	a = add .
+	amend = commit --amend
+	c = commit
+	cp = cherry-pick
+	f = push --force-with-lease
+	l = log
+	p = push
+	pl = pull
+	r = rebase
+	reset = reset HEAD --hard
+	s = switch
+	sc = switch -c
+	sm = switch main
+	st = status
+	t = stash
+	tp = stash pop
+	u = pull --rebase origin main
+	um = pull --rebase origin master
+[commit]
+	gpgsign = true
+[core]
+	excludesFile = ~/.gitignore
+	autocrlf = input
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+[user]
+	name = Dylan Butler
+	email = dylan@but.la
+	signingkey = 376DEFD3BA501E07
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
