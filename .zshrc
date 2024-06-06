@@ -22,13 +22,19 @@ load() {
     if [ -f $1 ]; then source $1; fi
 }
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 load $HOME/google-cloud-sdk/path.zsh.inc
 load $HOME/google-cloud-sdk/completion.zsh.inc
-load "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-load "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 load $HOME/.fzf.zsh
-load /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-load /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+load "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+load "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+load $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+load $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
 eval "$(kubectl completion zsh)"
