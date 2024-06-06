@@ -1,7 +1,6 @@
 autoload -Uz compinit
 compinit
 
-. ~/.anz.zshrc
 . ~/.theme.zsh
 
 # ENV VARS
@@ -25,6 +24,8 @@ load() {
 
 load $HOME/google-cloud-sdk/path.zsh.inc
 load $HOME/google-cloud-sdk/completion.zsh.inc
+load "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+load "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 load $HOME/.fzf.zsh
 load /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 load /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
