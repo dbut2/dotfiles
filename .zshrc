@@ -41,6 +41,9 @@ q() {
 gl() {
 	goland $(q $1)
 }
+cg() {
+    cd "$(ghq root)/github.com/$1"
+}
 
 alias c="cat"
 alias cd="z"
