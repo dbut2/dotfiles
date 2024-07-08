@@ -3,6 +3,7 @@
 	amend = commit --amend
 	c = commit
 	cp = cherry-pick
+	e = fetch --prune
 	f = push --force-with-lease
 	l = log
 	p = push
@@ -30,7 +31,7 @@
 [init]
 	defaultBranch = main
 [pull]
-	rebase = true
+	rebase = false
 [push]
 	autoSetupRemote = true
 [user]

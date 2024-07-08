@@ -15,6 +15,7 @@ export PATH=$PATH:$HOME/google-gcloud-sdk/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/Library/Python/3.9/bin
+export PATH=$PATH:/opt/homebrew/opt/swagger-codegen@2/bin
 
 # TOOLING
 
@@ -63,10 +64,12 @@ alias kp="kube-prompt"
 alias login="gcloud auth login"
 
 alias g="git"
-alias gp="git push"
-alias gs="git switch"
-alias gsc="git switch --create"
-alias gsm="git switch main"
-alias gt="git stash"
-alias gtp="git stash pop"
+alias ge="git e"
+alias gf="git f"
+alias gp="git p"
+alias gs="git s"
+alias gsc="git sc"
+alias gsm="git sm"
+alias gt="git t"
+alias gtp="git tp"
 alias commit="git commit"
