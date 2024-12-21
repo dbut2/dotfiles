@@ -5,11 +5,13 @@ compinit
 
 # ENV VARS
 
+export AOC_SESSION=
+
 export OPENAI_TOKEN=
 
 export FETCH_IDE=goland
 export FETCH_TEMPLATE=template
-export FETCH_FILES=01.go,test1.txt,puzzle.md
+export FETCH_FILES=01.go
 
 export PATH=$PATH:$HOME/google-gcloud-sdk/bin
 export PATH=$PATH:$HOME/go/bin
@@ -52,6 +54,7 @@ cg() {
     cd "$(ghq root)/github.com/$1"
 }
 
+alias tf="terraform"
 alias c="cat"
 alias cd="z"
 alias l="ls -AFGho"
