@@ -40,3 +40,5 @@
 	signingkey = 376DEFD3BA501E07
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[gpg]
+	program = /opt/homebrew/bin/gpg

@@ -54,6 +54,8 @@ cg() {
     cd "$(ghq root)/github.com/$1"
 }
 
+alias wake="caffeinate -u -t 1"
+
 alias tf="terraform"
 alias c="cat"
 alias cd="z"
