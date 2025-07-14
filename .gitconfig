@@ -23,6 +23,7 @@
 [core]
 	excludesFile = ~/.gitignore
 	autocrlf = input
+	editor = nvim
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
@@ -41,4 +42,8 @@
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [gpg]
-	program = /opt/homebrew/bin/gpg
+    program = /opt/homebrew/bin/gpg
+[diff]
+	algorithm = histogram
+[help]
+	autocorrect = prompt

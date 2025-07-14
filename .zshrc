@@ -5,6 +5,8 @@ compinit
 
 # ENV VARS
 
+export EDITOR=nvim
+
 export AOC_SESSION=
 
 export OPENAI_TOKEN=
@@ -18,6 +20,8 @@ export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/Library/Python/3.9/bin
 export PATH=$PATH:/opt/homebrew/opt/swagger-codegen@2/bin
+
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # TOOLING
 
@@ -34,13 +38,13 @@ fi
 load $HOME/google-cloud-sdk/path.zsh.inc
 load $HOME/google-cloud-sdk/completion.zsh.inc
 load $HOME/.fzf.zsh
+source <(fzf --zsh)
 load $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 load $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 load $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 load $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
-eval "$(kubectl completion zsh)"
 
 # ALIASES
 
@@ -49,6 +53,12 @@ q() {
 }
 gl() {
 	goland $(q $1)
+}
+rr() {
+  rustrover $(q $1)
+}
+rd() {
+  rider $(q $1)
 }
 cg() {
     cd "$(ghq root)/github.com/$1"
