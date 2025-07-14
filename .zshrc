@@ -65,6 +65,7 @@ cg() {
 }
 
 alias wake="caffeinate -u -t 1"
+alias nap="pmset displaysleepnow"
 
 alias tf="terraform"
 alias c="cat"
