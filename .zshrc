@@ -1,33 +1,45 @@
-autoload -Uz compinit
-compinit
-
+# ============================================================================
+# CORE CONFIGURATION
+# ============================================================================
 . ~/.theme.zsh
+. ~/.anz.zshrc
 
-# ENV VARS
-
+# ============================================================================
+# ENVIRONMENT VARIABLES
+# ============================================================================
 export EDITOR=nvim
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 export AOC_SESSION=
-
 export OPENAI_TOKEN=
+export ANTHROPIC_API_TOKEN=
+export OLLAMA_HOST=
 
 export FETCH_IDE=goland
 export FETCH_TEMPLATE=template
 export FETCH_FILES=01.go
 
-export PATH=$PATH:$HOME/google-gcloud-sdk/bin
-export PATH=$PATH:$HOME/go/bin
+# ============================================================================
+# PATH CONFIGURATION
+# ============================================================================
 export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/Library/Python/3.9/bin
+
 export PATH=$PATH:/opt/homebrew/opt/swagger-codegen@2/bin
+export PATH=$PATH:/opt/homebrew/opt/node@22/bin
+export PATH=$PATH:/opt/homebrew/opt/ruby/bin
 
-export HOMEBREW_NO_AUTO_UPDATE=1
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
-# TOOLING
+# ============================================================================
+# TOOL INITIALIZATION
+# ============================================================================
+load() { [ -f "$1" ] && source "$1"; }
 
-load() {
-    if [ -f $1 ]; then source $1; fi
-}
+autoload -Uz compinit
+{ compinit -C } &!
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -35,46 +47,40 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-load $HOME/google-cloud-sdk/path.zsh.inc
-load $HOME/google-cloud-sdk/completion.zsh.inc
-load $HOME/.fzf.zsh
-source <(fzf --zsh)
-load $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-load $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-load $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-load $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+load "$HOME/google-cloud-sdk/path.zsh.inc"
+load "$HOME/google-cloud-sdk/completion.zsh.inc"
+load "$HOME/.fzf.zsh"
+load "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+load "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+load "$HOME/.bun/_bun"
+
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
 
+# ============================================================================
+# FUNCTIONS
+# ============================================================================
+q() { zoxide query -- $1 }
+
+gl() { goland $(q $1) }
+rr() { rustrover $(q $1) }
+rd() { rider $(q $1) }
+
+cg() { cd "$(ghq root)/$(ghq list | grep "$1\$")" }
+
+# ============================================================================
 # ALIASES
-
-q() {
-	zoxide query -- $1
-}
-gl() {
-	goland $(q $1)
-}
-rr() {
-  rustrover $(q $1)
-}
-rd() {
-  rider $(q $1)
-}
-cg() {
-    cd "$(ghq root)/github.com/$1"
-}
-
+# ============================================================================
 alias wake="caffeinate -u -t 1"
-alias nap="pmset displaysleepnow"
+alias l="ls -AFGho"
+alias c="cat"
+alias v="pbpaste"
+alias cd="z"
 
 alias tf="terraform"
-alias c="cat"
-alias cd="z"
-alias l="ls -AFGho"
 alias m="make"
-alias v="pbpaste"
-
 alias lint="golangci-lint run"
+
 alias k="kubectl"
 alias kp="kube-prompt"
 alias login="gcloud auth login"
@@ -89,3 +95,6 @@ alias gsm="git sm"
 alias gt="git t"
 alias gtp="git tp"
 alias commit="git commit"
+
+alias t="tmux"
+

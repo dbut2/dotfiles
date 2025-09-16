@@ -1,0 +1,16 @@
+# quick terminal
+keybind = global:alt+space=toggle_quick_terminal
+quick-terminal-position = bottom
+quick-terminal-screen = mouse
+quick-terminal-space-behavior = move
+
+# keybinds
+keybind = option+command+left=previous_tab
+keybind = option+command+right=next_tab
+keybind = command+q=close_window
+keybind = shift+enter=text:\n
+
+# visual
+macos-icon = xray
+macos-titlebar-style = tabs
+font-feature = -calt
