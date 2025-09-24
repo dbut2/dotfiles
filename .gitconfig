@@ -41,6 +41,8 @@
 	signingkey = 376DEFD3BA501E07
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[url "ssh://git@dbut.codes/"]
+	insteadOf = https://dbut.codes/
 [gpg]
     program = /opt/homebrew/bin/gpg
 [diff]
