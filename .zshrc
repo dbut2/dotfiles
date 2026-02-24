@@ -17,7 +17,7 @@ export OLLAMA_HOST=
 
 export FETCH_IDE=goland
 export FETCH_TEMPLATE=template
-export FETCH_FILES=01.go
+export FETCH_FILES=1.go
 
 # ============================================================================
 # PATH CONFIGURATION
@@ -50,6 +50,9 @@ fi
 load "$HOME/google-cloud-sdk/path.zsh.inc"
 load "$HOME/google-cloud-sdk/completion.zsh.inc"
 load "$HOME/.fzf.zsh"
+source <(fzf --zsh)
+load "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+load "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 load "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 load "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 load "$HOME/.bun/_bun"
@@ -67,6 +70,8 @@ rr() { rustrover $(q $1) }
 rd() { rider $(q $1) }
 
 cg() { cd "$(ghq root)/$(ghq list | grep "$1\$")" }
+
+helpme() { claude -p "$*" }
 
 # ============================================================================
 # ALIASES
@@ -89,6 +94,7 @@ alias g="git"
 alias ge="git e"
 alias gf="git f"
 alias gp="git p"
+alias grs="git sparse-checkout set"
 alias gs="git s"
 alias gsc="git sc"
 alias gsm="git sm"
