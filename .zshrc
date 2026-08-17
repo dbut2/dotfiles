@@ -19,6 +19,21 @@ export FETCH_TEMPLATE=template
 export FETCH_FILES=1.go
 
 # ============================================================================
+# HISTORY
+# ============================================================================
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt EXTENDED_HISTORY       # record epoch + duration against each command
+setopt INC_APPEND_HISTORY     # write as you go, not only on shell exit
+setopt SHARE_HISTORY          # one history across concurrent shells
+setopt HIST_IGNORE_DUPS       # drop consecutive repeats, keep the rest
+setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_SPACE      # a leading space keeps a command out of history
+setopt HIST_VERIFY            # expand !! for confirmation instead of running it
+
+# ============================================================================
 # PATH CONFIGURATION
 # ============================================================================
 export PATH=$PATH:$HOME/bin
@@ -69,6 +84,7 @@ rr() { rustrover $(q $1) }
 rd() { rider $(q $1) }
 
 cg() { cd "$(ghq root)/$(ghq list | grep "$1\$")" }
+gg() { ghq get "$1" || return; local q="${1%.git}"; q="${q#*://}"; q="${q#*@}"; zoxide add "$(ghq list -p -e "${q/://}")" }
 
 helpme() { claude -p "$*" }
 
@@ -77,7 +93,7 @@ helpme() { claude -p "$*" }
 # ============================================================================
 alias wake="caffeinate -u -t 1"
 alias l="ls -AFGho"
-alias c="cat"
+alias c="cd ~"
 alias v="pbpaste"
 alias cd="z"
 
