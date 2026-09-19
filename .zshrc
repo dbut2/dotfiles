@@ -9,10 +9,7 @@
 export EDITOR=nvim
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-export AOC_SESSION=
-export OPENAI_TOKEN=
-export ANTHROPIC_API_TOKEN=
-export OLLAMA_HOST=
+[ -f ~/.secrets.zsh ] && . ~/.secrets.zsh
 
 export FETCH_IDE=goland
 export FETCH_TEMPLATE=template
@@ -36,6 +33,7 @@ setopt HIST_VERIFY            # expand !! for confirmation instead of running it
 # ============================================================================
 # PATH CONFIGURATION
 # ============================================================================
+export PATH=$HOME/.local/bin:$PATH
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/Library/Python/3.9/bin
@@ -43,6 +41,11 @@ export PATH=$PATH:$HOME/Library/Python/3.9/bin
 export PATH=$PATH:/opt/homebrew/opt/swagger-codegen@2/bin
 export PATH=$PATH:/opt/homebrew/opt/node@22/bin
 export PATH=$PATH:/opt/homebrew/opt/ruby/bin
+export PATH=$PATH:/opt/homebrew/opt/postgresql@18/bin
+
+export DEVKITPRO=/opt/devkitpro
+export DEVKITARM=$DEVKITPRO/devkitARM
+export PATH=$PATH:$DEVKITPRO/tools/bin:$DEVKITARM/bin
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
@@ -92,6 +95,7 @@ helpme() { claude -p "$*" }
 # ALIASES
 # ============================================================================
 alias wake="caffeinate -u -t 1"
+alias dns="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias l="ls -AFGho"
 alias c="cd ~"
 alias v="pbpaste"
