@@ -43,8 +43,6 @@
 	insteadOf = https://github.com/
 [url "ssh://git@dbut.codes/"]
 	insteadOf = https://dbut.codes/
-[includeIf "gitdir:~/ghq/github.com/dylanbotler/"]
-	path = ~/.dylanbotler.gitconfig
 [gpg]
     program = /opt/homebrew/bin/gpg
 [diff]

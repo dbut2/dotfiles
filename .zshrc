@@ -9,8 +9,6 @@
 export EDITOR=nvim
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-[ -f ~/.secrets.zsh ] && . ~/.secrets.zsh
-
 export FETCH_IDE=goland
 export FETCH_TEMPLATE=template
 export FETCH_FILES=1.go
