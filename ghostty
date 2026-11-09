@@ -14,3 +14,5 @@ keybind = shift+enter=text:\n
 macos-icon = xray
 macos-titlebar-style = tabs
 font-feature = -calt
+
+shell-integration-features = ssh-terminfo,ssh-env
