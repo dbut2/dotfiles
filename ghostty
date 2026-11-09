@@ -16,3 +16,7 @@ macos-titlebar-style = tabs
 font-feature = -calt
 
 shell-integration-features = ssh-terminfo,ssh-env
+
+command = /bin/zsh -lc "$HOME/.local/bin/claude; exec zsh -l"
+working-directory = home
+window-inherit-working-directory = false
