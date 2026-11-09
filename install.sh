@@ -1,14 +1,16 @@
 #!/bin/zsh
 
 install() {
-  if [ -f $HOME/$1 ]; then
-    cp $HOME/$1 $HOME/$1.bak
-    rm $HOME/$1
+  local src=$1 dest=${2:-$HOME/$1}
+  mkdir -p ${dest:h}
+  if [ -f $dest ]; then
+    cp $dest $dest.bak
+    rm $dest
   fi
-  ln -sf $(pwd)/$1 $HOME/$1
-  if [ -f $HOME/$1.bak ]; then
-    cat $HOME/$1.bak > $HOME/$1
-    rm $HOME/$1.bak
+  ln -sf $(pwd)/$src $dest
+  if [ -f $dest.bak ]; then
+    cat $dest.bak > $dest
+    rm $dest.bak
   fi
 }
 
@@ -16,3 +18,4 @@ install .gitconfig
 install .gitignore
 install .theme.zsh
 install .zshrc
+install ghostty $HOME/.config/ghostty/config
